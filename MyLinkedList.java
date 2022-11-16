@@ -28,7 +28,7 @@ this.power = pow;
 this.next = null;
 }
     public void toStringforNode() {
-       System.out.print(this.coef + "^" +  this.power + " ");
+       System.out.print(this.coef + "x^" +  this.power + " + ");
    }
 }
  public void insertLast(int coef, int pow) {
@@ -149,10 +149,12 @@ this.next = null;
          i.toStringforNode();
          i = i.next;
      }
+     System.out.println("Second polynomial");
      while(j != null) {
          j.toStringforNode();
          j = j.next;
      }
+     System.out.println("");
  }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
