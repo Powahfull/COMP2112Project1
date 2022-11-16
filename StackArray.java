@@ -40,7 +40,9 @@ return top == - 1;
 }
 public String peek() {
     return this.data[top];
+    
 }
+/*
 public static boolean isPalindromeEvenElements(StackArray s) {
     if(s.data.length % 2 != 0) {
         return false;
@@ -64,6 +66,8 @@ public static boolean isPalindromeEvenElements(StackArray s) {
     }
     return isPalindrome;
 }
+*/
+/*
 public static boolean isPalindromeOddElements(StackArray s) {
     if(s.data.length % 2 == 0) {
         return false;
@@ -84,6 +88,44 @@ public static boolean isPalindromeOddElements(StackArray s) {
             isPalindrome = false;
             break;
         }
+    }
+    return isPalindrome;
+}
+*/
+public static boolean isPalindrome(StackArray s) {
+    StackArray temp = new StackArray(s.data.length / 2);
+    boolean isPalindrome = true;
+    if(s.data.length % 2 == 0) {
+    for(int i = s.data.length - 1; i >= s.data.length / 2; i--) {
+        temp.push(s.pop());
+    }
+    
+    for(int i = s.top; i >= 0; i--) {
+        String s1 = temp.data[i];
+        String s2 = s.data[i];
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    while(!temp.isEmpty()) {
+        s.push(temp.pop());
+    }
+    }else {
+        for(int i = s.data.length - 1; i > s.data.length / 2; i--) {
+        temp.push(s.pop());
+    }
+    for(int i = s.top - 1; i >= 0; i--) {
+        String s1 = temp.data[i];
+        String s2 = s.data[i];
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    while(!temp.isEmpty()) {
+        s.push(temp.pop());
+    }
     }
     return isPalindrome;
 }
