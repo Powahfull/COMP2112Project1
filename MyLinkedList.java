@@ -156,6 +156,7 @@ this.next = null;
      }
      System.out.println("");
  }
+ /*
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyLinkedList l1 = new MyLinkedList();
@@ -213,6 +214,7 @@ this.next = null;
             } 
         }
     }
+    */
 }
 
 
