@@ -5,6 +5,8 @@
  */
 package datastructuresandalgorithmsproject1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author apple
@@ -24,6 +26,7 @@ top++;
 data[top] = element;
 }
 }
+
 public String pop() {
 if (isEmpty()) {
 throw new java.util.NoSuchElementException(); 
@@ -93,10 +96,10 @@ public static boolean isPalindromeOddElements(StackArray s) {
 }
 */
 public static boolean isPalindrome(StackArray s) {
-    StackArray temp = new StackArray(s.data.length / 2);
+    StackArray temp = new StackArray((s.top + 1) / 2);
     boolean isPalindrome = true;
-    if(s.data.length % 2 == 0) {
-    for(int i = s.data.length - 1; i >= s.data.length / 2; i--) {
+    if((s.top + 1) % 2 == 0) {
+    for(int i = s.top; i >= (s.top + 1) / 2; i--) {
         temp.push(s.pop());
     }
     
@@ -112,7 +115,7 @@ public static boolean isPalindrome(StackArray s) {
         s.push(temp.pop());
     }
     }else {
-        for(int i = s.data.length - 1; i > s.data.length / 2; i--) {
+        for(int i = s.top - 1; i > (s.top + 1) / 2; i--) {
         temp.push(s.pop());
     }
     for(int i = s.top - 1; i >= 0; i--) {
@@ -130,12 +133,12 @@ public static boolean isPalindrome(StackArray s) {
     return isPalindrome;
 }
 public static void deleteMiddle(StackArray s) {
-    if(s.data.length % 2 == 0) {
+    if((s.top + 1) % 2 == 0) {
         System.out.println("There is no middle element as the size of stack is even.");
         return;
     }
-    StackArray temp = new StackArray(s.data.length / 2);
-    for(int i = 0; i < s.data.length / 2; i++) {
+    StackArray temp = new StackArray((s.top + 1) / 2);
+    for(int i = 0; i < (s.top + 1) / 2; i++) {
         temp.push(s.pop());
     }
     s.pop();
@@ -144,10 +147,57 @@ public static void deleteMiddle(StackArray s) {
     }
 }
 public void print() {
+    if(isEmpty()) {
+        return;
+    }
     String s = this.peek();
     this.pop();
     print();
     System.out.print(s + " ");
     this.push(s);
 }
+    public static void main(String[] args) {
+        StackArray sa = new StackArray(100);
+        Scanner scanner = new Scanner(System.in);
+        boolean condition = true;
+        while(condition) {
+            System.out.println("1- Push");
+            System.out.println("2- Pop");
+            System.out.println("3- Print");
+            System.out.println("4- Delete middle");
+            System.out.println("5- isPalindrome");
+            
+            System.out.println("Enter your operation");
+            int operation = scanner.nextInt();
+            switch(operation) {
+                case 1:
+                    System.out.println("How many times do you want to push ? ");
+                    int numberOfPush = scanner.nextInt();
+                    for(int i = 0; i < numberOfPush; i++) {
+                        System.out.println("Enter the String");
+                        String s1 = scanner.next();
+                        sa.push(s1);
+                    }
+                    break;
+                case 2:
+                    System.out.println(sa.pop());
+                    break;
+                case 3:
+                    sa.print();
+                    break;
+                    case 4:
+                    StackArray.deleteMiddle(sa);
+                    break;
+                    case 5:
+                        System.out.println(StackArray.isPalindrome(sa));
+                    break;
+                case 6:
+                    condition = false;
+                    break;
+                    default: 
+                        System.out.println("Wrong operation number");
+                        break;
+            } 
+        }
+    }
 }
