@@ -45,90 +45,44 @@ public String peek() {
     return this.data[top];
     
 }
-/*
-public static boolean isPalindromeEvenElements(StackArray s) {
-    if(s.data.length % 2 != 0) {
-        return false;
-    }
-    StackArray temp = new StackArray(s.data.length / 2);
-    StackArray temp2 = new StackArray(s.data.length / 2);
-    for(int i = s.data.length - 1; i >= s.data.length / 2; i--) {
-        temp.push(s.data[i]);
-    }
-    for(int i = 0; i < s.data.length / 2; i++) {
-        temp2.push(s.data[i]);
-    }
-    boolean isPalindrome = true;
-    while(!temp.isEmpty() && !temp2.isEmpty()) {
-        String s1 = temp.pop();
-        String s2 = temp.pop();
-        if(!(s1.equals(s2))) {
-            isPalindrome = false;
-            break;
-        }
-    }
-    return isPalindrome;
-}
-*/
-/*
-public static boolean isPalindromeOddElements(StackArray s) {
-    if(s.data.length % 2 == 0) {
-        return false;
-    }
-    StackArray temp = new StackArray(s.data.length / 2);
-    StackArray temp2 = new StackArray(s.data.length / 2);
-    for(int i = s.data.length - 1; i > s.data.length / 2; i--) {
-        temp.push(s.data[i]);
-    }
-    for(int i = 0; i < s.data.length / 2; i++) {
-        temp2.push(s.data[i]);
-    }
-    boolean isPalindrome = true;
-    while(!temp.isEmpty() && !temp2.isEmpty()) {
-        String s1 = temp.pop();
-        String s2 = temp.pop();
-        if(!(s1.equals(s2))) {
-            isPalindrome = false;
-            break;
-        }
-    }
-    return isPalindrome;
-}
-*/
-public static boolean isPalindrome(StackArray s) {
+
+    public static boolean isPalindromeEvenElements(StackArray s) {
     StackArray temp = new StackArray((s.top + 1) / 2);
-    boolean isPalindrome = true;
-    if((s.top + 1) % 2 == 0) {
+    StackArray temp2 = new StackArray((s.top + 1) / 2);
     for(int i = s.top; i >= (s.top + 1) / 2; i--) {
-        temp.push(s.pop());
+        temp.push(s.data[i]);
     }
-    
-    for(int i = s.top; i >= 0; i--) {
-        String s1 = temp.data[i];
-        String s2 = s.data[i];
+    for(int i = 0; i < (s.top + 1) / 2; i++) {
+        temp2.push(s.data[i]);
+    }
+    boolean isPalindrome = true;
+    while(!temp.isEmpty() && !temp2.isEmpty()) {
+        String s1 = temp.pop();
+        String s2 = temp.pop();
         if(!(s1.equals(s2))) {
             isPalindrome = false;
             break;
         }
     }
-    while(!temp.isEmpty()) {
-        s.push(temp.pop());
+    return isPalindrome;
+}
+    public static boolean isPalindromeOddElements(StackArray s) {
+    StackArray temp = new StackArray((s.top + 1) / 2);
+    StackArray temp2 = new StackArray((s.top + 1) / 2);
+    for(int i = s.top; i > (s.top + 1) / 2; i--) {
+        temp.push(s.data[i]);
     }
-    }else {
-        for(int i = s.top - 1; i > (s.top + 1) / 2; i--) {
-        temp.push(s.pop());
+    for(int i = 0; i < (s.top + 1) / 2; i++) {
+        temp2.push(s.data[i]);
     }
-    for(int i = s.top - 1; i >= 0; i--) {
-        String s1 = temp.data[i];
-        String s2 = s.data[i];
+    boolean isPalindrome = true;
+    while(!temp.isEmpty() && !temp2.isEmpty()) {
+        String s1 = temp.pop();
+        String s2 = temp.pop();
         if(!(s1.equals(s2))) {
             isPalindrome = false;
             break;
         }
-    }
-    while(!temp.isEmpty()) {
-        s.push(temp.pop());
-    }
     }
     return isPalindrome;
 }
@@ -191,7 +145,11 @@ public void print() {
                     StackArray.deleteMiddle(sa);
                     break;
                     case 5:
-                        System.out.println(StackArray.isPalindrome(sa));
+                        if((sa.top + 1) % 2 == 0) {
+                            System.out.println(StackArray.isPalindromeEvenElements(sa));
+                        }else {
+                            System.out.println(StackArray.isPalindromeOddElements(sa));
+                        }
                     break;
                 case 6:
                     condition = false;
@@ -203,3 +161,93 @@ public void print() {
         }
     }
 }
+
+
+
+/*
+StackArray temp = new StackArray((s.top + 1) / 2);
+    boolean isPalindrome = true;
+    if((s.top + 1) % 2 == 0) {
+    for(int i = s.top; i >= (s.top + 1) / 2; i--) {
+        temp.push(s.pop());
+    }
+    
+    for(int i = s.top; i >= 0; i--) {
+        String s1 = temp.data[i];
+        String s2 = s.data[i];
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    while(!temp.isEmpty()) {
+        s.push(temp.pop());
+    }
+    }else {
+        for(int i = s.top - 1; i > (s.top + 1) / 2; i--) {
+        temp.push(s.pop());
+    }
+    for(int i = s.top - 1; i >= 0; i--) {
+        String s1 = temp.data[i];
+        String s2 = s.data[i];
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    while(!temp.isEmpty()) {
+        s.push(temp.pop());
+    }
+    }
+    return isPalindrome;
+*/
+/*
+public static boolean isPalindromeEvenElements(StackArray s) {
+    if(s.data.length % 2 != 0) {
+        return false;
+    }
+    StackArray temp = new StackArray(s.data.length / 2);
+    StackArray temp2 = new StackArray(s.data.length / 2);
+    for(int i = s.data.length - 1; i >= s.data.length / 2; i--) {
+        temp.push(s.data[i]);
+    }
+    for(int i = 0; i < s.data.length / 2; i++) {
+        temp2.push(s.data[i]);
+    }
+    boolean isPalindrome = true;
+    while(!temp.isEmpty() && !temp2.isEmpty()) {
+        String s1 = temp.pop();
+        String s2 = temp.pop();
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    return isPalindrome;
+}
+*/
+/*
+public static boolean isPalindromeOddElements(StackArray s) {
+    if(s.data.length % 2 == 0) {
+        return false;
+    }
+    StackArray temp = new StackArray(s.data.length / 2);
+    StackArray temp2 = new StackArray(s.data.length / 2);
+    for(int i = s.data.length - 1; i > s.data.length / 2; i--) {
+        temp.push(s.data[i]);
+    }
+    for(int i = 0; i < s.data.length / 2; i++) {
+        temp2.push(s.data[i]);
+    }
+    boolean isPalindrome = true;
+    while(!temp.isEmpty() && !temp2.isEmpty()) {
+        String s1 = temp.pop();
+        String s2 = temp.pop();
+        if(!(s1.equals(s2))) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    return isPalindrome;
+}
+*/
