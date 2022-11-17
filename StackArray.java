@@ -161,6 +161,7 @@ public void print() {
         Scanner scanner = new Scanner(System.in);
         boolean condition = true;
         while(condition) {
+            System.out.println(" ");
             System.out.println("1- Push");
             System.out.println("2- Pop");
             System.out.println("3- Print");
@@ -180,7 +181,8 @@ public void print() {
                     }
                     break;
                 case 2:
-                    System.out.println(sa.pop());
+                    System.out.println("Popped element");
+                    System.out.print(sa.pop());
                     break;
                 case 3:
                     sa.print();
