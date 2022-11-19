@@ -100,7 +100,8 @@ public void print() {
             System.out.println("3- Print");
             System.out.println("4- Delete middle");
             System.out.println("5- isPalindrome");
-            
+            System.out.println("6- Exit");
+           
             System.out.println("Enter your operation");
             int operation = scanner.nextInt();
             switch(operation) {
