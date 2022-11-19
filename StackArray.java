@@ -49,7 +49,7 @@ public String peek() {
     
 }
 
-    public  boolean isPalindromeEvenElements() {
+    public  boolean isPalindrome() {
         boolean isPalindrome = true;
         StackArray temp = new StackArray(this.top + 1);
         int j = this.top;
@@ -124,7 +124,7 @@ public void print() {
                     StackArray.deleteMiddle(sa);
                     break;
                     case 5:
-                        System.out.println(isPalindromeOddElements(sa));
+                        System.out.println(sa.isPalindrome());
                     break;
                 case 6:
                     condition = false;
